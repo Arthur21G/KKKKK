@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            font-family: Arial;
+        }
+        .button-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(255, 46, 46);
+        }
+        
+        .button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 40px;
+            background-color: #ffffff;
+            color: red;
+            border: 21px red;
+            border-radius: 3px;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .label {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color:;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="button-container">
+        <label class="label">Eae vai aceitar ou não? Tu sabe o que</label>
+        <button id="button-1" class="button">não</button>
+        <button id="button-2" class="button">Aceito</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var button1 = document.querySelector("#button-1");
+            var button1Container = document.querySelector(".button-container");
+            var containerWidth = button1Container.offsetWidth - button1.offsetWidth;
+            var containerHeight = button1Container.offsetHeight - button1.offsetHeight;
+            
+            button1Container.addEventListener('mousemove', function(e) {
+                var x = e.pageX - button1Container.offsetLeft - button1.offsetWidth / 2;
+                var y = e.pageY - button1Container.offsetTop - button1.offsetHeight / 2;
+                
+                button1.style.left = x + "px";
+                button1.style.top = y + "px";
+            });
+            
+            button1.addEventListener('click', function() {
+                var x = Math.floor(Math.random() * containerWidth);
+                var y = Math.floor(Math.random() * containerHeight);
+                
+                button1.style.left = x + "px";
+                button1.style.top = y + "px";
+            });
+            
+            document.querySelector("#button-2").addEventListener('click', function() {
+                alert("Feito, Obrigado por sua colaboração\n Agr cade meu presente?");
+            });
+
+            button1.addEventListener('click', function() {
+                button1.style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>
+
